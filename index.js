@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const exp = require("constants");
 const express = require("express");
 const app = express();
@@ -33,6 +35,6 @@ app.get("/productos/:id", (req, res) => {
   res.send("Producto: " + req.params.id);
 });
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
