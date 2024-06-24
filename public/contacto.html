@@ -10,6 +10,31 @@
     <h1>Express</h1>
     <p>Lorem ipsum dolor sit amet.</p>
 
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Imagen</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script>
+      fetch("http://localhost:3000/productos/42")
+        .then((res) => res.json())
+        .then((producto) => {
+          console.log(producto);
+          const tbody = document.querySelector("tbody");
+          tbody.innerHTML = `
+            <tr>
+              <td>${producto.nombre}</td>
+              <td><img src="http://localhost:3000/uploads/${producto.imagen}" width="100" alt="${producto.nombre}"></td>
+            </tr>
+          `;
+        });
+    </script>
+
     <script src="./js/script.js"></script>
   </body>
 </html>

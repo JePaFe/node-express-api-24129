@@ -30,10 +30,12 @@ const show = (req, res) => {
 };
 
 const store = (req, res) => {
+  // console.log(req.file);
   const { nombre, stock, precio } = req.body;
 
-  const sql = "INSERT INTO productos (nombre, precio, stock) VALUES (?, ?, ?)";
-  db.query(sql, [nombre, precio, stock], (error, result) => {
+  const sql =
+    "INSERT INTO productos (nombre, precio, stock, imagen) VALUES (?, ?, ?, ?)";
+  db.query(sql, [nombre, precio, stock, req.file.filename], (error, result) => {
     if (error) {
       return res.status(500).json({ error: "Intente mas tarde" });
     }
